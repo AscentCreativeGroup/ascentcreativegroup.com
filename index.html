@@ -1,120 +1,560 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Ascent Creative Group</title>
-        <meta name="author" content="Ascent Creative Group">
-        <meta name="description" content="Ascent Creative Group is a startup">
-        <meta name="keywords" content="software,digital,print,design,development,product">
-        <style type="text/css">
-            html, body, div, span, applet, object, iframe,
-            h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-            a, abbr, acronym, address, big, cite, code,
-            del, dfn, em, img, ins, kbd, q, s, samp,
-            small, strike, strong, sub, sup, tt, var,
-            b, u, i, center,
-            dl, dt, dd, ol, ul, li,
-            fieldset, form, label, legend,
-            table, caption, tbody, tfoot, thead, tr, th, td,
-            article, aside, canvas, details, embed, 
-            figure, figcaption, footer, header, hgroup, 
-            menu, nav, output, ruby, section, summary,
-            time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-            }
-            /* HTML5 display-role reset for older browsers */
-            article, aside, details, figcaption, figure, 
-            footer, header, hgroup, menu, nav, section {
-            display: block;
-            }
-            body {
-            line-height: 1;
-            }
-            body {
-            background: #242424;
-            }
-            .container {
-            width: 80%;
-            height: 80%;
-            position: absolute;    
-            margin:auto;
-            top:0;
-            bottom:0;
-            left:0;
-            right:0;
-            }
-            img {
-            max-width: 100%;
-            max-height: 100%;  
-            position: absolute;
-            margin:auto;
-            top:0;
-            bottom:0;
-            left:0;
-            right:0;
-            }
+<!doctype html>
+<html class="no-js" lang="">
 
-.fullscreen-bg {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
-}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Ascent Creative Group</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:500,700" rel="stylesheet">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
 
-.fullscreen-bg__video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    -webkit-transform: translate(-50%, -50%);
-       -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-}
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
 
-@media (max-width: 767px) {
-    .fullscreen-bg {
-        background: url('http://dev2.slicejack.com/fullscreen-video-demo/img/videoframe.jpg') center center / cover no-repeat;
+  <!-- color references -->
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+    }
+    .circle {
+      background: #454b7e
+    }
+    .hover {
+      background: #454b7e
+    }
+    .greyed-1 {
+      background: #ebebeb;
+    }
+    .greyed-2 {
+      background: #ddd;
+    }
+    .contact {
+      background: #333;
+    }
+    .text-1 {
+      color: #333;
+    }
+    .text-2 {
+      color: #ebebeb;
+    }
+  </style>
+
+  <!-- major layouts -->
+  <style>
+    .content {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      overflow: hidden;
+
+    }
+    .contact {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 100vh;
+      background-color: #222;
+    }
+    </style>
+
+  <!-- emblems -->
+  <style>
+    .ascent-circle {
+      width: 14vw;
+      height: 14vw;
+      background: #454b7e;
+      top: calc(50% - 7vw);
+      left: calc(50% - 7vw);
+      position: absolute;
+      border-radius: 7vw;
+      z-index: 2;
+      opacity: 1;
+      transition: opacity 450ms ease-in-out;
+    }
+    .fadeOut {
+      opacity: 0;
+    }
+    .logo {
+      width: 14vw;
+      height: 14vw;
+      background: url(public/images/ascent.png) center center no-repeat;
+      background-size: 100%;
+    }
+    .go-to-contact {
+      position: absolute;
+      bottom: 0;
+      left: 43vw;
+      width: 14vw;
+      height: 46px;
+      border-radius: 5px 5px 0 0;
+      background: #222;
+      color: #ebebeb;
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      font-size: 24px;
+      padding-top: 10px;
+      font-weight: bold;
+      letter-spacing: 6px;
+      z-index: 2;
+    }
+  </style>
+
+  <!-- tiles -->
+  <style>
+    .tile {
+      width: 50vw;
+      height: 50vh;
+      display: inline-block;
     }
 
-    .fullscreen-bg__video {
-        display: none;
+    .quadrant {
+      width: 50vw;
+      height: 50vh;
+      position: absolute;
+      transition: all 450ms ease-in-out;
+      white-space: nowrap;
     }
-}
-        </style>
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-113311698-1']);
-            _gaq.push(['_trackPageview']);
-            (function()
-            {
-             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-    </head>
-    <body>
 
-<div class="fullscreen-bg">
-    <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
-        <source src="loop.mp4" type="video/mp4">
-    </video>
-</div>
+    .tile:hover {
+      background: #6F738B;
+    }
 
-        <div class="container">
-            <img src="logo.png"/>
-        </div>
-    </body>
+    .message {
+      width: 50vw;
+      top: 0;
+      left: 50vw;
+      height: 50vh;
+      background: #40476B;
+      z-index: 1;
+      display: inline-block;
+      position: absolute;
+    }
+
+    .lets-talk {
+      width: 100vw;
+      height: 0;
+      left: 0;
+      top: 50vh;
+      z-index: 2;
+      position: absolute;
+      display: inline-block;
+      font-weight: bold;
+      text-align: center;
+      font-size: 8vw;
+      overflow:hidden;
+      transition: all 450ms ease-in-out;
+      padding-top: 9vh;
+    }
+
+
+    .btn {
+      text-decoration: none;
+      background: #B8B6CE;
+      width: 250px;
+      height: 56px;
+      font-size: 36px;
+      color: white;
+      margin: 5vh auto 0 auto;
+      text-align: center;
+      display: block;
+    }
+
+    .resume-btn {
+      width: 400px;
+    }
+
+  </style>
+
+  <!-- about -->
+  <style>
+    .tile-about {
+      width: 100%;
+      height: 100%;
+      background: url("public/images/about.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: bottom;
+    }
+
+    .about {
+      background: white;
+      left: 0;
+      top: 0;
+      position: absolute;
+    }
+
+    .about .message {
+
+      display: flex;
+      align-items: center;
+    }
+
+    .about .message p {
+      width: 39.5vw;
+      color: #ebebeb;
+      font-size: 3vw;
+      margin-left: 4.75vw;
+      position: relative;
+      white-space: normal;
+    }
+
+
+
+    @media only screen and (min-width: 1200px) {
+
+      .about .message p {
+        font-size: 32px;
+      }
+    }
+
+    .about.not-selected {
+
+      transition: all 450ms ease-in-out;
+      left: -50vw;
+      top: -50vh;
+    }
+    .about.selected {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .about .message {
+      width: 0vw;
+      overflow: hidden;
+      transition: all 450ms ease-in-out;
+    }
+
+    .about.selected .message {
+      width: 50vw;
+    }
+
+    .about.selected .lets-talk {
+      height: 50vh;
+    }
+  </style>
+
+  <!-- services -->
+  <style>
+
+    .tile-services {
+      width: 100%;
+      height: 100%;
+      background: url("public/images/services.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position-y: bottom;
+    }
+
+    .services {
+      background: #ebebeb;
+      left: 50vw;
+      top: 0;
+      position: absolute;
+    }
+
+
+    .services .message p {
+      transition: all 450ms ease-in-out;
+      width: 65%;
+      color: #ebebeb;
+      font-size: 5vh;
+      margin: 0 auto;
+      position: relative;
+      white-space: normal;
+    }
+
+    .services.not-selected {
+      left: 150vw;
+      top: -100vh;
+    }
+    .services.selected {
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+    }
+    .services.selected .message {
+      transition: all 450ms ease-in-out;
+      left: 50vw;
+    }
+    .services.selected .lets-talk {
+      height: 50vh;
+    }
+
+  </style>
+
+  <!-- hiring -->
+  <style>
+    .tile-hiring {
+
+      background-position-y: bottom;
+      width: 100%;
+      height: 100%;
+      background: url("public/images/hiring.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    .hiring {
+      background: #ebebeb;
+      left: 0;
+      top: 50vh;
+      position: absolute;
+    }
+
+
+
+    .hiring .message p {
+      width: 32.5vw;
+      color: #ebebeb;
+      font-size: 3.6vw;
+      margin-left: 8.75vw;
+      margin-top: 0;
+      position: relative;
+      white-space: normal;
+    }
+
+    @media only screen and (min-width: 1200px) {
+
+      .hiring .message p {
+        font-size: 36px;
+      }
+    }
+
+
+    .hiring.not-selected {
+      transition: all 450ms ease-in-out;
+      left: -100vw;
+      top: 150vh;
+    }
+
+    .hiring.selected {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+    }
+
+    .hiring .message {
+      width: 0vw;
+      overflow: hidden;
+      transition: all 450ms ease-in-out;
+    }
+
+    .hiring.selected .message {
+      width: 50vw;
+    }
+    .hiring.selected .lets-talk {
+      height: 50vh;
+    }
+
+  </style>
+
+  <!--- contactPage -->
+  <style>
+    .tile-contactPage{
+      width: 100%;
+      height: 100%;
+      background: url("public/images/contact.png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    .contactPage {
+      background: white;
+      left: 50vw;
+      top: 50vh;
+      position: absolute;
+    }
+    .contactPage .message p {
+
+      transition: all 450ms ease-in-out;
+      width: 73%;
+      color: #ebebeb;
+      font-size: 2.2vw;
+      margin: 0 auto;
+      position: relative;
+      white-space: normal;
+    }
+
+    .contactPage.not-selected {
+      left: 150vw;
+      top: 150vh;
+    }
+    .contactPage.selected {
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+    }
+    .contactPage.selected .message {
+      transition: all 450ms ease-in-out;
+      left: 50vw;
+    }
+    .contactPage.selected .lets-talk {
+      height: 50vw;
+    }
+  </style>
+
+  <style>
+    @media only screen and (min-aspect-ratio: 5/3) {
+      .tile-services, .tile-about, .tile-contactPage, .tile-hiring {
+        background-size: contain;
+        background-position-y: bottom;
+        background-position-x: center;
+      }
+    }
+    @media only screen and (max-aspect-ratio: 5/3) {
+      .tile-services, .tile-about, .tile-contactPage, .tile-hiring {
+        background-size: 129%;
+        background-position-x: center;
+        background-position-y: bottom;
+      }
+    }
+    @media only screen and (max-aspect-ratio: 1/1) {
+
+      .ascent-circle {
+        width: 22vw;
+        height: 22vw;
+        top: calc(50% - 11vw);
+        left: calc(50% - 11vw);
+        border-radius: 11vw;
+      }
+
+      .logo {
+        width: 22vw;
+        height: 22vw;
+      }
+
+      .tile-services, .tile-about, .tile-contactPage, .tile-hiring {
+        background-size: 160%;
+        background-position-x: center;
+        background-position-y: bottom;
+      }
+
+      .tile-hiring, .tile-contactPage {
+
+        background-position-y: center;
+      }
+    }
+
+    .message p {
+
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <div class="content">
+    <div class="about quadrant">
+      <div class="tile">
+        <div class="tile-about"></div>
+      </div>
+      <div class="message">
+        <p>We're a team of expert designers & developers. We can confidently bring your project together from concept to implementation.</p>
+      </div>
+      <div class="lets-talk">
+        Have a project in mind?
+        <a href="mailto:ascent.creative.group@gmail.com" class="btn">Let's talk.</a>
+      </div>
+    </div>
+    <div class="services quadrant">
+      <div class="tile">
+        <div class="tile-services"></div>
+      </div>
+      <div class="message">
+        <p>
+          Design,<br> Design,<br> Print,<br> Digital.
+        </p>
+      </div>
+      <div class="lets-talk">
+        Have a project in mind?
+        <a href="mailto:ascent.creative.group@gmail.com" class="btn">Let's talk.</a>
+      </div>
+    </div>
+    <div class="hiring quadrant">
+      <div class="tile">
+        <div class="tile-hiring"></div>
+      </div>
+      <div class="message">
+        <p>We're looking for an experienced Digital Product Manager to join us.</p>
+      </div>
+      <div class="lets-talk">
+      Want to apply?
+      <a href="mailto:ascent.creative.group@gmail.com" class="btn resume-btn">Send us your résumé.</a>
+      </div>
+    </div>
+    <div class="contactPage quadrant">
+      <div class="tile">
+        <div class="tile-contactPage"></div>
+      </div>
+      <div class="message">
+        <p>
+          Phone: 1 919 764 4436<br />
+          Email: ascent.creative.group@gmail.com<br />
+          Location: Portland, Oregon
+        </p>
+      </div>
+      <div class="lets-talk">
+        Have a project in mind?
+        <a href="mailto:ascent.creative.group@gmail.com" class="btn">Let's talk.</a>
+      </div>
+    </div>
+    <div class="ascent-circle">
+      <div class="logo"> </div>
+    </div>
+    <!--<div class="go-to-contact">Contact</div>-->
+  </div>
+  <!--<div class="contact">-->
+    <!--<div class="form"></div>-->
+    <!--<div class="contact-rail">-->
+
+    <!--</div>-->
+  <!--</div>-->
+
+  <script src="js/vendor/modernizr-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+  </script>
+  <script>
+    $(() => {
+      $(".quadrant").click( function () {
+        const isSelected = $(this).hasClass('selected');
+        $(".quadrant").removeClass('selected');
+        $(".quadrant").removeClass('not-selected');
+
+        if (!isSelected) {
+          $(this).toggleClass('selected');
+          $(".quadrant").addClass('not-selected');
+        }else{
+        }
+        $(this).removeClass('not-selected');
+        $(".ascent-circle").toggleClass('fadeOut');
+      });
+    });
+    $(".go-to-contact").click(() => {
+      $([document.documentElement, document.body]).animate({
+        scrollTop: $(".contact").offset().top
+      }, 300);
+    });
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+</body>
+
 </html>
